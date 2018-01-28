@@ -1,0 +1,22 @@
+{% extends 'stories/base.html' %}
+{% block body %}
+{% if all_stories %}
+    <h1>Most Recent Stories</h1>
+
+    <div class="container">
+       <div class="row">
+          <div class="col-sm-12 col-md-12">
+              <ul class="nav nav-tabs tabs-left" role="tablist">
+                  <li><span><strong>Story Title</strong></span><span class="pull-right"><strong>Created at</strong></span></li><br>
+                   {% for story in all_stories %}
+                       <li role="tab"><a href="{{story.story_id}}">{{story.story_title}}<span class="pull-right">{{story.story_created}}</span></a></li>
+                   {% endfor %}
+              </ul>
+           </div>
+  </div>
+</div>
+{% else %}
+    <h1>My All stories</h1>
+    <h2>No Stories found</h2>
+{% endif %}
+{% endblock %}

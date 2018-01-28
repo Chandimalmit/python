@@ -1,0 +1,106 @@
+{% extends 'stories/base.html' %}
+{% block body %}
+<div class="container">
+<h1>Ratings for the Story</h1>
+  <h3>Story Title:</h3>
+{% if rating_count %}
+<section class='rating-widget'>
+    {% for i in '01234' %}
+         <!-- Rating Stars Box -->
+  <div class='rating-stars block{{i}}'>
+    <ul class='stars'>
+      {% if i|add:0 == 0 %}
+          {% for j in '01234' %}
+              <li class='star selected'>
+                  <i class='fa fa-star fa-fw'></i>
+              </li>
+          {% endfor %}
+          {% for rating in rating_count %}
+               {% if rating.rating_value|add:0 == 5 %}
+               Total Number of Ratings: {{rating.total}}
+               {% endif %}
+          {% endfor %}
+      {% endif %}
+
+      {% if i|add:0 == 1 %}
+          {% for j in '0123' %}
+              <li class='star selected'>
+                  <i class='fa fa-star fa-fw'></i>
+              </li>
+          {% endfor %}
+          {% for j in '0' %}
+              <li class='star'>
+                  <i class='fa fa-star fa-fw'></i>
+              </li>
+          {% endfor %}
+          {% for rating in rating_count %}
+               {% if rating.rating_value|add:0 == 4 %}
+                   <span>Total Number of Ratings: {{rating.total}}</span>
+               {% endif %}
+          {% endfor %}
+      {% endif %}
+
+      {% if i|add:0 == 2 %}
+          {% for j in '012' %}
+              <li class='star selected'>
+                  <i class='fa fa-star fa-fw'></i>
+              </li>
+          {% endfor %}
+          {% for j in '01' %}
+              <li class='star'>
+                  <i class='fa fa-star fa-fw'></i>
+              </li>
+          {% endfor %}
+
+          {% for rating in rating_count %}
+               {% if rating.rating_value|add:0 == 3 %}
+                  Total Number of Ratings: {{rating.total}}
+               {% endif %}
+          {% endfor %}
+      {% endif %}
+
+      {% if i|add:0 == 3 %}
+          {% for j in '01' %}
+              <li class='star selected'>
+                  <i class='fa fa-star fa-fw'></i>
+              </li>
+          {% endfor %}
+          {% for j in '012' %}
+              <li class='star'>
+                  <i class='fa fa-star fa-fw'></i>{{total}}
+              </li>
+          {% endfor %}
+
+          {% for rating in rating_count %}
+               {% if rating.rating_value|add:0 == 2 %}
+                  Total Number of Ratings: {{rating.total}}
+               {% endif %}
+          {% endfor %}
+      {% endif %}
+
+       {% if i|add:0 == 4 %}
+          {% for j in '0' %}
+              <li class='star selected'>
+                  <i class='fa fa-star fa-fw'></i>
+              </li>
+          {% endfor %}
+          {% for j in '0123' %}
+              <li class='star'>
+                  <i class='fa fa-star fa-fw'></i>
+              </li>
+          {% endfor %}
+
+          {% for rating in rating_count %}
+               {% if rating.rating_value|add:0 == 1 %}
+                  Total Number of Ratings: {{rating.total}}
+               {% endif %}
+          {% endfor %}
+      {% endif %}
+
+    </ul>
+  </div>
+  {% endfor %}
+</section>
+{% endif %}
+</div>
+{% endblock %}
